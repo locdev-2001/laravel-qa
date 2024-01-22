@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\QuestionController;
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Support\Facades\Auth;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
