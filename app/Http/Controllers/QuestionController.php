@@ -45,6 +45,9 @@ class QuestionController extends Controller
     public function show(Question $question)
     {
         //
+        $question->setIncrementing('views');
+//        $question->increment('views');
+        return view('questions.show',['question'=>$question]);
     }
 
     /**
