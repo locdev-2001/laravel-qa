@@ -17,7 +17,7 @@
                         @include('layouts._message')
                         @foreach($questions as $question)
                             <div class="media d-flex gap-3">
-                                <div class="d-flex flex-wrap flex-column flex-1 counters">
+                                <div class="d-flex flex-wrap flex-column counters">
                                     <div class="vote">
                                         <strong>{{$question->votes}}</strong> {{Str::plural('vote',$question->votes)}}
                                     </div>
@@ -28,8 +28,15 @@
                                         {{$question->views." ".Str::plural('views',$question->views)}}
                                     </div>
                                 </div>
-                                <div class="media-body">
-                                    <h3 class="mt-0"><a href="{{$question->url}}">{{$question->title}}</a></h3>
+                                <div class="media-body flex-grow-1">
+                                    <div class="d-flex align-items-center justify-content-between w-100 gap-2">
+                                        <h3 class="mt-0"><a href="{{$question->url}}">{{$question->title}}</a></h3>
+                                        @if(auth()->id()=== $question->user->id)
+                                        <div>
+                                            <a href="{{route('questions.edit',$question->id)}}" class="btn btn-sm btn-outline-info">Edit</a>
+                                        </div>
+                                        @endif
+                                    </div>
                                     <p class="lead">
                                         Asked by
                                         <a href="{{$question->user->url}}">{{$question->user->name}} </a>
